@@ -5,12 +5,15 @@
     <title>WebAR Test</title>
 </head>
 <body>
-    <video id="webcam" style="width: auto; height: 100%" playsinline autoplay/>
+    <video id="webcam" style="width: 500px; height: auto; background: #222" playsinline autoplay/>
 </body>
 <script>
     'use strict';
     var videoElement = document.querySelector("webcam");
-
+    var constraints = window.constraints = {
+        audio: false,
+        video: true
+    }
     function gotDevices(deviceInfos){
         for(var i = 0; i !== deviceInfos.length; ++i){
             var deviceInfo = deviceInfos[i];
@@ -24,7 +27,7 @@
     function handleError(error){
         console.log("No webcam input.");
     }
-    navigator.mediaDevices.enumerateDevices().then(gotStream).catch(handleError);
+    navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleError);
 
 </script>
 </html>
