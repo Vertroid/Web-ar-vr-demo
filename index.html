@@ -13,11 +13,7 @@
     var videoElement = document.querySelector("webcam");
     var constraints = window.constraints = {
         audio: false,
-        video: {
-            deviceId: {
-                exact: "camera 1"
-            }
-        }
+        video: true
     };
     function gotDevices(deviceInfos){
         for(var i = 0; i !== deviceInfos.length; ++i){
@@ -26,7 +22,6 @@
         }
     }
     function gotStream(stream){
-        var videoTracks = stream.getVideoTracks();
         window.stream = stream;
         videoElement.srcObject = stream;
     }
@@ -34,6 +29,5 @@
         console.log("No webcam input.");
     }
     navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleError);
-
 </script>
 </html>
