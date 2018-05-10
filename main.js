@@ -8,7 +8,7 @@
 
 'use strict';
 
-var video = document.querySelector('webcam');
+var video = document.querySelector('#webcam');
 
 // Put variables in global scope to make them available to the browser console.
 var constraints = window.constraints = {
