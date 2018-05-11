@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cubemap demo</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <!--<script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>-->
+    <script src="js/components/click.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="room" src="img/cubemap.jpg"/>
+            <img id="room2" src="img/cubemap2.jpg"/>
+            <script id="plane" type="text/html">
+                <a-entity class="link"
+                          geometry="primitive: plane; height: 1; width: 1"
+                          material="shader: flat; color: black">
+
+                </a-entity>
+            </script>
+        </a-assets>
+        <a-sky id="image-360" radius="10" src="#room"></a-sky>
+        <!--<a-entity id="links" position="-3 -1 -4" layout="layout: line">-->
+            <!--<a-entity template="src: #plane"></a-entity>-->
+        <!--</a-entity>-->
+        <a-entity id="link" position="-3 -1 -4"
+                  geometry="primitive: plane; height: 1; width: 1"
+                  material="shader: flat; color: grey"
+                  set-image="on: click; target: #image-360; src: ${src}"
+                  data-src="#room2">
+
+        </a-entity>
+        <a-camera>
+            <a-cursor id="cursor"
+                      raycaster="objects: #link">
+                <a-animation begin="click" easing="ease-in" attribute="scale"
+                             startEvents="click"
+                             fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+            </a-cursor>
+        </a-camera>
+    </a-scene>
+</body>
+</html>
