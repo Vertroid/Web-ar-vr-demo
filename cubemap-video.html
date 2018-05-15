@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cubemap Video</title>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="js/components/play-on-window-click.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <video id="SphereVideo"
+                   autoplay
+                   loop="true"
+                   crossorigin="anonymous"
+                   playsinline webkit-playsinline>
+                <source type="video/mp4"
+                        src="video/magic.mp4"/>
+            </video>
+        </a-assets>
+        <a-videosphere rotation="0 180 0"
+                       src="#SphereVideo"
+                       play-on-window-click>
+
+        </a-videosphere>
+    </a-scene>
+</body>
+</html>

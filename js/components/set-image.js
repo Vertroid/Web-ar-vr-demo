@@ -11,10 +11,14 @@ AFRAME.registerComponent('set-image', {
 
         this.setupFadeAnimation();
         el.addEventListener(data.on, function(){
-            data.target.emit('set-image-fade');
-            setTimeout(function(){
+            if(data.target.getAttribute('material').src.toString().indexOf("img/cubemap2.jpg") != -1){
+                data.target.setAttribute('material', 'src', "img/cubemap.jpg");
+            }else{
                 data.target.setAttribute('material', 'src', "img/cubemap2.jpg");
-            }, data.dur);
+            }
+            // setTimeout(function(){
+            //     data.target.setAttribute('material', 'src', "img/cubemap2.jpg");
+            // }, data.dur);
         });
     },
     setupFadeAnimation: function(){
