@@ -11,6 +11,7 @@ AFRAME.registerComponent('set-image', {
 
         this.setupFadeAnimation();
         el.addEventListener(data.on, function(){
+            console.log("clicked");
             if(data.target.getAttribute('material').src.toString().indexOf("img/cubemap2.jpg") != -1){
                 data.target.setAttribute('material', 'src', "img/cubemap.jpg");
             }else{

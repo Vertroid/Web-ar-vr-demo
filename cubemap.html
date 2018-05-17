@@ -5,10 +5,12 @@
     <title>Cubemap demo</title>
     <script src="js/lib/jquery-3.3.1.min.js"></script>
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <!--<script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>-->
     <!--<script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>-->
-    <script src="js/components/set-image.js"></script>
     <script src="js/components/manager.js"></script>
+    <script src="js/components/set-image.js"></script>
+    <script src="js/components/mouse-tracker.js"></script>
 </head>
 <body>
     <a-scene manager="camera: #camera; link: #link1; scene: #scene">
@@ -30,18 +32,15 @@
         <a-entity id="link1" position="-3 0 -4"
                   geometry="primitive: plane; height: 1; width: 1"
                   material="shader: flat; color: grey"
-                  set-image="on: click; target: #image-360; src: ${src}"
+                  set-image="on: intersected; target: #image-360; src: ${src}"
                   data-src="#room2">
 
         </a-entity>
         <a-camera id="camera">
             <a-cursor id="cursor"
-                      animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-                      event-set__1="_event: mouseenter; color: springgreen"
-                      event-set__2="_event: mouseleave; color: black"
                       fuse="true"
-                      raycaster="objects: #link1">
-
+                      raycaster="objects: #link1"
+                      mouse-tracker="camera: #camera">
             </a-cursor>
         </a-camera>
     </a-scene>
