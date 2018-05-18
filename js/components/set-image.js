@@ -12,10 +12,10 @@ AFRAME.registerComponent('set-image', {
         this.setupFadeAnimation();
         el.addEventListener(data.on, function(){
             console.log("clicked");
-            if(data.target.getAttribute('material').src.toString().indexOf("img/cubemap2.jpg") != -1){
+            if(data.target.getAttribute('material').src.toString().indexOf("img/test.jpg") != -1){
                 data.target.setAttribute('material', 'src', "img/cubemap.jpg");
             }else{
-                data.target.setAttribute('material', 'src', "img/cubemap2.jpg");
+                data.target.setAttribute('material', 'src', "img/test.jpg");
             }
             // setTimeout(function(){
             //     data.target.setAttribute('material', 'src', "img/cubemap2.jpg");
